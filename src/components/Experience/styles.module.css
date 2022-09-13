@@ -1,0 +1,35 @@
+.experience {
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: 3rem;
+}
+
+.experience h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.experience p {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.exp_list {
+  display: flex;
+  flex-direction: row;
+}
+
+.work_list {
+  margin-bottom: 1.5rem;
+  margin-right: auto;
+}
+
+.resume_date {
+  min-width: 18rem;
+  text-align: right;
+}
+
+.resume_date span {
+  color: var(--color-secondary);
+  min-width: 18rem;
+}

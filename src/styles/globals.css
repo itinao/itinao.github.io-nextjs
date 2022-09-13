@@ -1,0 +1,72 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-family: -apple-system, 'Open Sans', sans-seriff;
+  font-size: 16px;
+  word-spacing: 1px;
+  box-sizing: border-box;
+  color: var(--color-text-primary);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Saira Extra Condensed', serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+}
+
+h1 {
+  font-size: 6rem;
+  line-height: 5.5rem;
+}
+
+h2 {
+  font-size: 3.5rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+a {
+  color: var(--color-secondary);
+  text-decoration: none;
+  background-color: transparent;
+}
+
+a:hover, a:focus, a:active {
+  color: var(--color-primary-hover);
+}
+
+ul {
+  padding-left: 0;
+}
+
+li {
+  flex-direction: column;
+  list-style: none;
+}
+
+/* COLOR STYLES */
+:root {
+  --color: #868e96;
+  --color-primary: #478547;
+  --color-secondary: #3b833b;
+  --color-primary-hover: #276827;
+  --color-text-primary: #343a40;
+  --color-text-secondary: #e2e2e2;
+  --color-text-third: #343a40;
+  --bg: #f3f5f4;
+  --bg-secondary: #fff;
+  --border-color: #ddd;
+}
