@@ -1,31 +1,31 @@
 import styles from './styles.module.css'
 
+const devIcons = [
+  "devicon-csharp-plain",
+  "devicon-javascript-plain",
+  "devicon-html5-plain-wordmark",
+  "devicon-css3-plain-wordmark",
+  "devicon-git-plain",
+  "devicon-ruby-plain",
+  "devicon-nodejs-plain",
+  "devicon-bootstrap-plain",
+  "devicon-github-original",
+  "devicon-bitbucket-original-wordmark",
+  "devicon-dot-net-original-wordmark",
+  "devicon-jquery-plain-wordmark",
+  "devicon-linux-plain",
+  "devicon-visualstudio-plain",
+  "devicon-vuejs-plain"
+]
+
+const workflowList = [
+  "Cross Browser Testing & Debugging",
+  "REST API building",
+  "Agile Development & Scrum",
+  "Team working"
+]
+
 const Skills = () => {
-  const devIcons = [
-    "devicon-csharp-plain",
-    "devicon-javascript-plain",
-    "devicon-html5-plain-wordmark",
-    "devicon-css3-plain-wordmark",
-    "devicon-git-plain",
-    "devicon-ruby-plain",
-    "devicon-nodejs-plain",
-    "devicon-bootstrap-plain",
-    "devicon-github-original",
-    "devicon-bitbucket-original-wordmark",
-    "devicon-dot-net-original-wordmark",
-    "devicon-jquery-plain-wordmark",
-    "devicon-linux-plain",
-    "devicon-visualstudio-plain",
-    "devicon-vuejs-plain"
-  ]
-
-  const workflowList = [
-    "Cross Browser Testing & Debugging",
-    "REST API building",
-    "Agile Development & Scrum",
-    "Team working"
-  ]
-
   return (
     <div className={styles.skills}>
       <h2>SKILLS <i className="devicon-argocd-plain" /></h2>

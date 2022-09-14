@@ -2,6 +2,12 @@ import Link from 'next/link'
 import Typed from 'react-typed'
 import styles from './styles.module.css'
 
+const roles = [
+  'Software Enginneer',
+  'Full Stack Developer',
+  'Code Enthusiast!',
+]
+
 const About = () => {
   return (
     <div className={styles.about}>
@@ -9,11 +15,7 @@ const About = () => {
 
       <h3 className={styles.typing}>
         <Typed
-          strings={[
-            'Software Enginneer',
-            'Full Stack Developer',
-            'Code Enthusiast!',
-          ]}
+          strings={roles}
           typeSpeed={50}
           backSpeed={20}
           loop
