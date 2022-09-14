@@ -17,6 +17,10 @@
   color: rgba(255,255,255,.75);
 }
 
+.navbar a.active {
+  color: rgba(255,255,255,.75);
+}
+
 .navbar_img {
   display: flex;
   margin: auto auto 0;

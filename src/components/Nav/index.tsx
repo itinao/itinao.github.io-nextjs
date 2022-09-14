@@ -2,9 +2,25 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useContext } from 'react'
 import styles from './styles.module.css'
-import { ResumeContentsContext } from '@/libs/ResumeContentsContext'
+import { ResumeContents, ResumeContentsContext } from '@/components/ResumeContentsProvider'
 
 const Nav = () => {
+  const { contents, setContents } = useContext(ResumeContentsContext)
+
+  const scroll = (contents: string): void => {
+    const contentsElem = document.getElementById(contents)
+    if (!contentsElem) {
+      return
+    }
+
+    window.scroll({
+      top: contentsElem.offsetTop,
+      behavior: 'smooth',
+    })
+
+    setContents(contents)
+  }
+
   return (
     <nav className={styles.navbar}>
       <div className={styles.navbar_img}>
@@ -19,13 +35,25 @@ const Nav = () => {
 
       <ul className={styles.navbar_link}>
         <li>
-          <Link href='./'><a>ABOUT</a></Link>
+          <a
+            className={contents === ResumeContents.ABOUT ? styles.active : ''}
+            onClick={scroll.bind(this, ResumeContents.ABOUT)}>
+            ABOUT
+          </a>
         </li>
         <li>
-          <Link href='./'><a>EXPERIENCE</a></Link>
+          <a
+            className={contents === ResumeContents.EXPERIENCE ? styles.active : ''}
+            onClick={scroll.bind(this, ResumeContents.EXPERIENCE)}>
+            EXPERIENCE
+          </a>
         </li>
         <li>
-          <Link href='./'><a>SKILLS</a></Link>
+          <a
+            className={contents === ResumeContents.SKILLS ? styles.active : ''}
+            onClick={scroll.bind(this, ResumeContents.SKILLS)}>
+            SKILLS
+          </a>
         </li>
       </ul>
     </nav>
