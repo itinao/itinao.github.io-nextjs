@@ -23,6 +23,8 @@ const Nav = () => {
 
   return (
     <nav className={styles.navbar}>
+      <h2 className={styles.sp_title}>RESUME ITINAO</h2>
+
       <div className={styles.navbar_img}>
         <Link href='/'>
           <a>

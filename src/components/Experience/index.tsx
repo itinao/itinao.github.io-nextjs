@@ -5,7 +5,7 @@ const works = [
     "position": "Software Engineer / FullStack Developer",
     "responsabilities": [
       "Responsible for web ecommerce developing and maintaining.",
-      "Web Team leader, I take technical decisions about which technologies use in each project and how the team will works.",
+      "Team leader, I take technical decisions about which technologies use in each project and how the team will works.",
       "Backend Developer: Ruby 2.x | Ruby on Rails 4.x, 5.x, 6.x | MSSQL 5.x | Docker.",
       "Frontend Developer: VueJs | jQuery | Javascript."
     ],

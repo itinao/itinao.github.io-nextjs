@@ -15,8 +15,8 @@
 }
 
 .exp_list {
-  display: flex;
-  flex-direction: row;
+  display: block;
+  margin-bottom: 3rem;
 }
 
 .work_list {
@@ -24,12 +24,19 @@
   margin-right: auto;
 }
 
-.resume_date {
-  min-width: 18rem;
-  text-align: right;
-}
-
 .resume_date span {
   color: var(--color-secondary);
   min-width: 18rem;
+}
+
+@media (min-width: 992px) {
+  .exp_list {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .resume_date {
+    min-width: 18rem;
+    text-align: right;
+  }
 }
