@@ -19,7 +19,7 @@ const NavImage = () => {
 }
 
 const NavLinkList = () => {
-  const { contents, setContents } = useContext(ResumeContentsContext)
+  const { contents } = useContext(ResumeContentsContext)
 
   const scroll = (contents: string): void => {
     const contentsElem = document.getElementById(contents)
@@ -31,8 +31,6 @@ const NavLinkList = () => {
       top: contentsElem.offsetTop,
       behavior: 'smooth',
     })
-
-    setContents(contents)
   }
 
   return (
