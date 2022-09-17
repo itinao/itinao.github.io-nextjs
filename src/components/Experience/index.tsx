@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import styles from './styles.module.css'
 
 const works = [
@@ -56,4 +57,4 @@ const Experience = () => {
   )
 }
 
-export default Experience
+export default memo(Experience)

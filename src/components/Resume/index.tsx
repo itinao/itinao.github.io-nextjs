@@ -4,6 +4,7 @@ import Skills from "@/components/Skills"
 import styles from './styles.module.css'
 import { ResumeContents } from '@/components/ResumeContentsProvider'
 import { useScrollEffect } from "./hooks"
+import { memo } from "react"
 
 const Resume = () => {
   useScrollEffect()
@@ -23,4 +24,4 @@ const Resume = () => {
   )
 }
 
-export default Resume
+export default memo(Resume)
