@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import styles from './styles.module.css'
 
 const devIcons = [
@@ -57,4 +58,4 @@ const Skills = () => {
   )
 }
 
-export default Skills
+export default memo(Skills)

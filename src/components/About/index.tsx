@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { memo } from 'react'
 import Typed from 'react-typed'
 import styles from './styles.module.css'
 
@@ -42,4 +43,4 @@ const About = () => {
   )
 }
 
-export default About
+export default memo(About)

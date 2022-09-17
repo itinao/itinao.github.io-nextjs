@@ -10,8 +10,8 @@ export const useScrollEffect = () => {
   const { setContents } = useContext(ResumeContentsContext)
 
   useEffect(() => {
-    let contentInfoList: ContentInfo[] = []
     let currentElemOffsetY = 0
+    let contentInfoList: ContentInfo[] = []
     Object.values(ResumeContents).forEach((content) => {
       const elem = document.getElementById(content)
       if (!elem) {
