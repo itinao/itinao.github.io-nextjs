@@ -1,0 +1,89 @@
+name: "Dependabot Alert Notification"
+
+on:
+  push:
+  workflow_dispatch:
+#  schedule:
+#    - cron: "0 0 * * 1"  # 毎週月曜日0時に実行
+
+permissions: read-all
+
+env:
+  TZ: 'Asia/Tokyo'
+
+jobs:
+  notify-dependabot-alerts:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Fetch Dependabot Alerts
+        id: fetch_alerts
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api graphql -F owner="${{ github.repository_owner }}" -F repo="${{ github.event.repository.name }}" -f query='
+          query ($owner: String!, $repo: String!) {
+            repository(owner: $owner, name: $repo) {
+              url
+              vulnerabilityAlerts(first: 100) {
+                totalCount
+                nodes {
+                  createdAt
+                  number
+                  securityVulnerability {
+                    advisory {
+                      summary
+                      permalink
+                      classification
+                      severity
+                    }
+                    package {
+                      name
+                      ecosystem
+                    }
+                    firstPatchedVersion {
+                      identifier
+                    }
+                  }
+                }
+              }
+            }
+          }' > alerts.json
+
+      - name: Fetch Dependabot Alerts
+        id: fetch_alerts2
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cat alerts.json
+          gh api -H "Accept: application/vnd.github+json" -H 'Authorization: token ${{ secrets.GITHUB_TOKEN }}' /repos/itinao/itinao-resume/dependabot/alerts > alerts.json
+
+      - name: Process Alerts
+        id: process_alerts
+        run: |
+          cat alerts.json
+          alert_count=$(jq '.data.repository.vulnerabilityAlerts.totalCount' alerts.json)
+          echo "alert_count=$alert_count" >> $GITHUB_ENV
+
+          if [ "$alert_count" -eq 0 ]; then
+            echo "alerts_summary=No alerts found" >> $GITHUB_ENV
+          else
+            # HIGH / CRITICAL のみ出力
+            high_risk_alerts=$(jq '[.data.repository.vulnerabilityAlerts.nodes[] |
+              select(.securityVulnerability.advisory.severity == "HIGH" or .securityVulnerability.advisory.severity == "CRITICAL")] |
+              sort_by(
+                if .securityVulnerability.advisory.severity == "CRITICAL" then 0
+                elif .securityVulnerability.advisory.severity == "HIGH" then 1
+                else 2 end
+              )' alerts.json)
+            alerts_summary=$(echo $high_risk_alerts | jq -r '.[] |
+              "*Severity:* \(.securityVulnerability.advisory.severity)\n
+              *Package:* \(.securityVulnerability.package.name)\n
+              *Summary:* \(.securityVulnerability.advisory.summary)\n
+              *Created At:* \(.createdAt)\n
+              *URL:* https://github.com/${{ github.repository }}/security/dependabot/\(.number)\n"')
+            echo "alerts_summary=$alerts_summary" >> $GITHUB_ENV
+          fi
